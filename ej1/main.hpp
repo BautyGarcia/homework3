@@ -48,9 +48,9 @@ class Posicion: public MedicionBase {
 
 class SaveFlightData {
     public:
-        shared_ptr<Posicion> posicion;
-        shared_ptr<Presion> presion;
-        SaveFlightData(const Posicion& posicion, const Presion& presion);
+        Posicion& posicion;
+        Presion& presion;
+        SaveFlightData(Posicion& posicion, Presion& presion);
         void serializar(ostream & out) const;
         void deserializar(ifstream & in);
         void imprimir() const;

@@ -9,7 +9,7 @@ void MedicionBase::serializar(ostream& out) const {
 }
 
 void MedicionBase::deserializar(ifstream& in) {
-    unique_ptr<float> tiempoMedicion = make_unique<float>(0);
+    tiempoMedicion = make_unique<float>(0);
     in.read(reinterpret_cast<char*>(tiempoMedicion.get()), sizeof(*tiempoMedicion));
 }
 
@@ -69,15 +69,56 @@ void Posicion::imprimir() const {
     cout << "Tiempo de Medicion: " << getTiempo() << endl;
 }
 
+SaveFlightData::SaveFlightData(Posicion& posicion, Presion& presion):
+    posicion(posicion),
+    presion(presion)
+{};
 
+void SaveFlightData::serializar(ostream& out) const {
+    posicion.serializar(out);
+    presion.serializar(out);
+}
+
+void SaveFlightData::deserializar(ifstream& in) {
+    posicion.deserializar(in);
+    presion.deserializar(in);
+}
+
+void SaveFlightData::imprimir() const {
+    posicion.imprimir();
+    presion.imprimir();
+}
 
 int main() {
     try {
-        Posicion posicion(-34.6f, -58.4f, 950.0f, 5.3);
-        Presion presion(101.3f, 5.8f, 6.1f);
+        // Creo los objetos originales
+        Posicion posicionOriginal(-34.6f, -58.4f, 950.0f, 5.3f);
+        Presion presionOriginal(101.3f, 5.8f, 6.1f);
+        SaveFlightData saveFlightDataOriginal(posicionOriginal, presionOriginal);
 
-        posicion.imprimir();
-        presion.imprimir();
+        // Serializo
+        ofstream outFile("datos_vuelo.bin", ios::binary);
+        if (outFile.is_open()) {
+            saveFlightDataOriginal.serializar(outFile);
+            outFile.close();
+        }
+        
+        // Creo objetos para deserializar
+        Posicion posicionDeserializada(0.0f, 0.0f, 0.0f, 0.0f);
+        Presion presionDeserializada(0.0f, 0.0f, 0.0f);
+        SaveFlightData saveFlightDataDeserializado(posicionDeserializada, presionDeserializada);
+
+        // Deserializo
+        ifstream inFile("datos_vuelo.bin", ios::binary);
+        if (inFile.is_open()) {
+            saveFlightDataDeserializado.deserializar(inFile);
+            inFile.close();
+        }
+
+        // Imprimir los datos deserializados
+        cout << "Datos deserializados:" << endl;
+        saveFlightDataDeserializado.imprimir();
+
         return 0;
     } catch (const std::bad_alloc& e) {
         cerr << "Error de memoria: " << e.what() << endl;
