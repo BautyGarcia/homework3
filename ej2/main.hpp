@@ -52,29 +52,33 @@ class Elipse {
 };
 
 template<typename T>
-struct ProcesadorFigura {
-    void calcularArea(T& figura) {
-        cout << "No se puede calcular el area de esta figura" << endl;
-    }
+class ProcesadorFigura {
+    public:
+        void calcularArea(T& figura) {
+            cout << "No se puede calcular el area de esta figura" << endl;
+        }
 };
 
 template<>
-struct ProcesadorFigura<Rectangulo> {
-    float calcularArea(Rectangulo& rect) {
-        return rect.getAncho() * rect.getAlto();
-    }
+class ProcesadorFigura<Rectangulo> {
+    public:
+        float calcularArea(Rectangulo& rect) {
+            return rect.getAncho() * rect.getAlto();
+        }
 };
 
 template<>
-struct ProcesadorFigura<Circulo> {
-    float calcularArea(Circulo& circ) {
-        return M_PI * circ.getRadio() * circ.getRadio();
-    }
+class ProcesadorFigura<Circulo> {
+    public:
+        float calcularArea(Circulo& circ) {
+            return M_PI * circ.getRadio() * circ.getRadio();
+        }
 };
 
 template<>
-struct ProcesadorFigura<Elipse> {
-    float calcularArea(Elipse& elip) {
-        return M_PI * elip.getSemiejeMayor() * elip.getSemiejeMenor();
-    }
+class ProcesadorFigura<Elipse> {
+    public:
+        float calcularArea(Elipse& elip) {
+            return M_PI * elip.getSemiejeMayor() * elip.getSemiejeMenor();
+        }
 };
