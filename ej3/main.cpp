@@ -61,7 +61,7 @@ public:
                     resultado += ", \n";
                 }
             }
-            resultado += "\n  ]";
+            resultado += "\n\t]";
             return resultado;
         }
         else {
@@ -80,9 +80,9 @@ class JSONGenerator {
         }
 
         void imprimir() const {
-            cout << "{" << endl;
+            cout << "{";
             for (size_t i = 0; i < info.size(); ++i) {
-                cout << "  \"" << info[i].first << "\": " << info[i].second;
+                cout << " \"" << info[i].first << "\": " << info[i].second;
                 if (i < info.size() - 1) {
                     cout << ",";
                 }

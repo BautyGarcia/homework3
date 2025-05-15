@@ -54,7 +54,7 @@ class Elipse {
 template<typename T>
 class ProcesadorFigura {
     public:
-        void calcularArea(T& figura) {
+        void calcularArea(T&) {
             cout << "No se puede calcular el area de esta figura" << endl;
         }
 };
