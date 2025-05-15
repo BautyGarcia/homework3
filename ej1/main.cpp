@@ -4,6 +4,11 @@ MedicionBase::MedicionBase(float tiempoMedicion) {
     this->tiempoMedicion = make_unique<float>(tiempoMedicion);
 };
 
+// Hago copy constructor para que el puntero no se comparta
+MedicionBase::MedicionBase(const MedicionBase& other) {
+    this->tiempoMedicion = make_unique<float>(*(other.tiempoMedicion));
+}
+
 void MedicionBase::serializar(ostream& out) const {
     out.write(reinterpret_cast<char*>(tiempoMedicion.get()), sizeof(*tiempoMedicion));
 }

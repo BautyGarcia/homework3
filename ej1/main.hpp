@@ -16,6 +16,7 @@ class MedicionBase: public IMediciones {
         unique_ptr<float> tiempoMedicion;
     public:
         MedicionBase(float tiempoMedicion);
+        MedicionBase(const MedicionBase& other);
         virtual void serializar(ostream& out) const override;
         virtual void deserializar(ifstream& in) override;
         float getTiempo() const;
@@ -48,8 +49,8 @@ class Posicion: public MedicionBase {
 
 class SaveFlightData {
     public:
-        Posicion& posicion;
-        Presion& presion;
+        Posicion posicion;
+        Presion presion;
         SaveFlightData(Posicion& posicion, Presion& presion);
         void serializar(ostream & out) const;
         void deserializar(ifstream & in);
