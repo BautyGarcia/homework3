@@ -1,43 +1,11 @@
-#include "main.hpp"
+#include "headers/Punto.hpp"
+#include "headers/Rectangulo.hpp"
+#include "headers/Circulo.hpp"
+#include "headers/Elipse.hpp"
+#include "headers/ProcesadorFigura.hpp"
+#include <iostream>
 
-Punto::Punto(float x, float y) : x(x), y(y) {};
-
-float Punto::getX() const { return x; };
-
-float Punto::getY() const { return y; };
-
-Rectangulo::Rectangulo(Punto& verticeInferiorIzquierdo, float ancho, float alto) : 
-    posicion(verticeInferiorIzquierdo), 
-    ancho(ancho), 
-    alto(alto) 
-{};
-
-float Rectangulo::getAncho() const { return ancho; };
-
-float Rectangulo::getAlto() const { return alto; };
-
-Punto Rectangulo::getPosicion() const { return posicion; };
-
-Circulo::Circulo(Punto& centro, float radio) : 
-    centro(centro), 
-    radio(radio) 
-{};
-
-float Circulo::getRadio() const { return radio; };
-
-Punto Circulo::getCentro() const { return centro; };
-
-Elipse::Elipse(Punto& centro, float semiejeMayor, float semiejeMenor) : 
-    centro(centro), 
-    semiejeMayor(semiejeMayor), 
-    semiejeMenor(semiejeMenor) 
-{};
-
-float Elipse::getSemiejeMayor() const { return semiejeMayor; };
-
-float Elipse::getSemiejeMenor() const { return semiejeMenor; };
-
-Punto Elipse::getCentro() const { return centro; };
+using namespace std;
 
 int main() {
     Punto p1(0.0f, 0.0f);

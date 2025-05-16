@@ -7,6 +7,7 @@
 
 using namespace std;
 
+// Funcion auxiliar para convertir vectores de numeros a string
 template<typename T>
 string vectorToString(const vector<T>& vec) {
     if constexpr (is_integral_v<T> || is_floating_point_v<T>) {
@@ -27,6 +28,7 @@ string vectorToString(const vector<T>& vec) {
     }
 }
 
+// Clase contenedora que guarda un vector de algo (tipo T) y devuelve su string correspondiente al procesar
 template<typename T>
 class Contenedor {
     std::vector<T> elementos;
@@ -70,6 +72,7 @@ public:
     }
 };
 
+// Clase que asigna una key (string) a su valor (Contenedor<T> -> string)
 class JSONGenerator {
     private:
         vector<pair<string, string>> info;
@@ -99,7 +102,8 @@ int main() {
     doubles.agregar(3.2);
 
     Contenedor<string> palabras;
-    palabras.agregar("Hola");
+    // Nose porque el subrayado pero mariano dijo que tenia que ser igual
+    palabras.agregar("H͟o͟l͟a͟");
     palabras.agregar("Mundo");
 
     Contenedor<vector<int>> listas;
