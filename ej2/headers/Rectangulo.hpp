@@ -8,6 +8,9 @@ class Rectangulo {
         float getAncho() const;
         float getAlto() const;
         Punto getPosicion() const;
+        void setAncho(float ancho);
+        void setAlto(float alto);
+        void setPosicion(Punto& posicion);
         ~Rectangulo() = default;
     private:
         Punto posicion;

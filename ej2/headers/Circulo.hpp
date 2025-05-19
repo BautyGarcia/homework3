@@ -7,6 +7,8 @@ class Circulo {
         Circulo(Punto& centro, float radio);
         float getRadio() const;
         Punto getCentro() const;
+        void setRadio(float radio);
+        void setCentro(Punto& centro);
         ~Circulo() = default;
     private:
         Punto centro;

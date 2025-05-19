@@ -6,6 +6,8 @@ class Punto {
         Punto(float x, float y);
         float getX() const;
         float getY() const;
+        void setX(float x);
+        void setY(float y);
         ~Punto() = default;
     private:
         float x;

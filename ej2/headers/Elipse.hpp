@@ -8,6 +8,9 @@ class Elipse {
         float getSemiejeMayor() const;
         float getSemiejeMenor() const;
         Punto getCentro() const;
+        void setSemiejeMayor(float semiejeMayor);
+        void setSemiejeMenor(float semiejeMenor);
+        void setCentro(Punto& centro);
         ~Elipse() = default;
     private:
         Punto centro;
