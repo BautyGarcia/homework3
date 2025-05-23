@@ -1,8 +1,8 @@
-#include "headers/Punto.hpp"
-#include "headers/Rectangulo.hpp"
-#include "headers/Circulo.hpp"
-#include "headers/Elipse.hpp"
-#include "headers/ProcesadorFigura.hpp"
+#include "../headers/Punto.hpp"
+#include "../headers/Rectangulo.hpp"
+#include "../headers/Circulo.hpp"
+#include "../headers/Elipse.hpp"
+#include "../headers/ProcesadorFigura.hpp"
 #include <iostream>
 
 using namespace std;
