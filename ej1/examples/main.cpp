@@ -12,7 +12,7 @@ int main() {
         SaveFlightData saveFlightDataOriginal(posicionOriginal, presionOriginal);
 
         // Serializo
-        ofstream outFile("datos_vuelo.bin", ios::binary);
+        ofstream outFile("datos_vuelo.dat", ios::binary);
         if (outFile.is_open()) {
             saveFlightDataOriginal.serializar(outFile);
             outFile.close();
@@ -24,7 +24,7 @@ int main() {
         SaveFlightData saveFlightDataDeserializado(posicionDeserializada, presionDeserializada);
 
         // Deserializo
-        ifstream inFile("datos_vuelo.bin", ios::binary);
+        ifstream inFile("datos_vuelo.dat", ios::binary);
         if (inFile.is_open()) {
             saveFlightDataDeserializado.deserializar(inFile);
             inFile.close();
