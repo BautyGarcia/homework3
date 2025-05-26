@@ -53,12 +53,12 @@ public:
         else if constexpr (is_same_v<T, vector<int>>) {
             string resultado = "[ \n";
             for (size_t i = 0; i < elementos.size(); ++i) {
-                resultado += "\t" + vectorToString(elementos[i]);  // margen manual ('\t')
+                resultado += "\t  " + vectorToString(elementos[i]);  // margen manual ('\t  ')
                 if (i < elementos.size() - 1) {
                     resultado += ", \n";
                 }
             }
-            resultado += "\n\t]";
+            resultado += "\n\t  ]";
             return resultado;
         }
         else { // Por las dudas si me pasan algo que no contemplo (no pasa nunca pero bueno)
@@ -80,7 +80,8 @@ class JSONGenerator {
         void imprimir() const {
             cout << "{";
             for (size_t i = 0; i < info.size(); ++i) {
-                cout << " \"" << info[i].first << "\": " << info[i].second;
+                if (i != 0) cout << " "; // Solamente para que quede IGUAL al ejemplo jadsjasjdasjd
+                cout << " \"" << info[i].first << "\":" << info[i].second;
                 if (i < info.size() - 1) {
                     cout << ",";
                 }
